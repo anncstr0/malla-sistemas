@@ -19,7 +19,7 @@ const cursos = [
   { id: 18, nombre: "Física III", prereq: [13], ciclo: 4 },
   { id: 19, nombre: "Estadística I", prereq: [], ciclo: 4 },
   { id: 20, nombre: "Programación para móviles", prereq: [17], ciclo: 5 },
-  { id: 21, nombre: "Arquitectura de aplicaciones en la nube", prereq: [15,17], ciclo: 5 },
+  { id: 21, nombre: "Arquitectura de aplicaciones en la nube", prereq: [15, 17], ciclo: 5 },
   { id: 22, nombre: "Administración de servidores y de base de datos", prereq: [15], ciclo: 5 },
   { id: 23, nombre: "Realidad Nacional", prereq: [], ciclo: 5 },
   { id: 24, nombre: "Métodos y técnicas de investigación", prereq: [19], ciclo: 5 },
@@ -32,12 +32,12 @@ const cursos = [
   { id: 31, nombre: "Análisis Web", prereq: [28], ciclo: 7 },
   { id: 32, nombre: "Analítica avanzada", prereq: [28], ciclo: 7 },
   { id: 33, nombre: "Gestión del talento humano", prereq: [], ciclo: 7 },
-  { id: 34, nombre: "Administración de las tecnologías de la información", prereq: [27,30], ciclo: 8 },
-  { id: 35, nombre: "Integración de sistemas", prereq: [27,30], ciclo: 8 },
-  { id: 36, nombre: "Seguridad en redes de datos", prereq: [27,30], ciclo: 8 },
+  { id: 34, nombre: "Administración de las tecnologías de la información", prereq: [27, 30], ciclo: 8 },
+  { id: 35, nombre: "Integración de sistemas", prereq: [27, 30], ciclo: 8 },
+  { id: 36, nombre: "Seguridad en redes de datos", prereq: [27, 30], ciclo: 8 },
   { id: 37, nombre: "Inglés técnico II", prereq: [4], ciclo: 8 },
   { id: 38, nombre: "Auditoría de aplicaciones informáticas", prereq: [34], ciclo: 9 },
-  { id: 39, nombre: "Sistemas de información general", prereq: [32,35], ciclo: 9 },
+  { id: 39, nombre: "Sistemas de información general", prereq: [32, 35], ciclo: 9 },
   { id: 40, nombre: "Integración continua", prereq: [21], ciclo: 9 },
   { id: 41, nombre: "Desarrollo de emprendedores", prereq: [39], ciclo: 10 },
   { id: 42, nombre: "Aplicaciones de Machine Learning", prereq: [32], ciclo: 10 },
@@ -48,24 +48,38 @@ const malla = document.getElementById("malla");
 const aprobados = new Set();
 
 function crearMalla() {
-  const ciclos = [...new Set(cursos.map(c => c.ciclo))];
+  const anios = [
+    { anio: "Primer Año", ciclos: [1, 2] },
+    { anio: "Segundo Año", ciclos: [3, 4] },
+    { anio: "Tercer Año", ciclos: [5, 6] },
+    { anio: "Cuarto Año", ciclos: [7, 8] },
+    { anio: "Quinto Año", ciclos: [9, 10] }
+  ];
 
-  ciclos.forEach(ciclo => {
-    const divCiclo = document.createElement("div");
-    divCiclo.className = "ciclo";
-    divCiclo.innerHTML = `<h2>Ciclo ${ciclo}</h2>`;
+  anios.forEach(({ anio, ciclos }) => {
+    const divAnio = document.createElement("div");
+    divAnio.className = "anio";
+    divAnio.innerHTML = `<h2>${anio}</h2>`;
 
-    cursos.filter(c => c.ciclo === ciclo).forEach(curso => {
-      const btn = document.createElement("button");
-      btn.textContent = curso.nombre;
-      btn.className = "curso bloqueado";
-      btn.id = `curso-${curso.id}`;
-      btn.disabled = true;
+    ciclos.forEach(ciclo => {
+      const divCiclo = document.createElement("div");
+      divCiclo.className = "ciclo";
+      divCiclo.innerHTML = `<h3>Ciclo ${ciclo}</h3>`;
 
-      divCiclo.appendChild(btn);
+      cursos.filter(c => c.ciclo === ciclo).forEach(curso => {
+        const btn = document.createElement("button");
+        btn.textContent = curso.nombre;
+        btn.className = "curso bloqueado";
+        btn.id = `curso-${curso.id}`;
+        btn.disabled = true;
+
+        divCiclo.appendChild(btn);
+      });
+
+      divAnio.appendChild(divCiclo);
     });
 
-    malla.appendChild(divCiclo);
+    malla.appendChild(divAnio);
   });
 
   actualizarCursos();
