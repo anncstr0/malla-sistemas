@@ -106,4 +106,4 @@ function actualizarCursos() {
   });
 }
 
-crearMalla();
+document.addEventListener("DOMContentLoaded", crearMalla);
