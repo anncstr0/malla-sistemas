@@ -57,14 +57,11 @@ function crearMalla() {
   ];
 
   const contenedor = document.createElement("div");
-  contenedor.style.display = "flex";
-  contenedor.style.overflowX = "auto";
-  contenedor.style.gap = "16px";
+  contenedor.id = "contenedor-malla";
 
   anios.forEach(({ anio, ciclos }) => {
     const divAnio = document.createElement("div");
     divAnio.className = "anio";
-    divAnio.style.minWidth = "280px";
     divAnio.innerHTML = `<h2>${anio}</h2>`;
 
     ciclos.forEach(ciclo => {
