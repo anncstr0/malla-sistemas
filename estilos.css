@@ -1,9 +1,9 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f0f6ff;
-  color: #333;
   margin: 0;
   padding: 20px;
+  color: #333;
 }
 
 h1 {
@@ -11,24 +11,30 @@ h1 {
   color: #3a6ea5;
 }
 
-#malla {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.anio {
+  margin-bottom: 32px;
+  padding: 20px;
+  border-left: 6px solid #aad4f5;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.anio h2 {
+  color: #2b5981;
+  margin-top: 0;
 }
 
 .ciclo {
-  border: 2px solid #aad4f5;
+  margin-top: 10px;
+  padding: 10px;
   background-color: #eaf4ff;
+  border: 2px solid #aad4f5;
   border-radius: 10px;
-  padding: 15px;
 }
 
-.ciclo h2 {
-  margin-top: 0;
-  color: #2b5981;
-  border-bottom: 1px solid #aad4f5;
-  padding-bottom: 5px;
+.ciclo h3 {
+  margin: 0 0 10px;
+  color: #446a8d;
 }
 
 .curso {
@@ -44,7 +50,6 @@ h1 {
   text-align: left;
   background-color: #bcdcf0;
   color: #455a64;
-  position: relative;
   transition: background-color 0.3s, color 0.3s;
 }
 
