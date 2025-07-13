@@ -5,6 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Malla Interactiva Ingeniería en Sistemas</title>
   <link rel="stylesheet" href="estilos.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f6ff;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #3a6ea5;
+    }
+
+    #malla {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ciclo {
+      border: 2px solid #aad4f5;
+      background-color: #eaf4ff;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .ciclo h2 {
+      margin-top: 0;
+      color: #2b5981;
+      border-bottom: 1px solid #aad4f5;
+      padding-bottom: 5px;
+    }
+
+    .curso {
+      display: block;
+      width: 100%;
+      margin: 6px 0;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: left;
+      background-color: #bcdcf0;
+      color: #455a64;
+      position: relative;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .curso.aprobado {
+      background-color: #72c4ff;
+      color: #ffffff;
+      text-decoration: line-through;
+    }
+
+    .curso.bloqueado {
+      opacity: 0.5;
+      background-color: #d4eaf7;
+      color: #777;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
   <h1>Malla Curricular Interactiva</h1>
