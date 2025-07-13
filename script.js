@@ -56,9 +56,15 @@ function crearMalla() {
     { anio: "Quinto Año", ciclos: [9, 10] }
   ];
 
+  const contenedor = document.createElement("div");
+  contenedor.style.display = "flex";
+  contenedor.style.overflowX = "auto";
+  contenedor.style.gap = "16px";
+
   anios.forEach(({ anio, ciclos }) => {
     const divAnio = document.createElement("div");
     divAnio.className = "anio";
+    divAnio.style.minWidth = "280px";
     divAnio.innerHTML = `<h2>${anio}</h2>`;
 
     ciclos.forEach(ciclo => {
@@ -79,9 +85,10 @@ function crearMalla() {
       divAnio.appendChild(divCiclo);
     });
 
-    malla.appendChild(divAnio);
+    contenedor.appendChild(divAnio);
   });
 
+  malla.appendChild(contenedor);
   actualizarCursos();
 }
 
