@@ -60,29 +60,34 @@ function crearMalla() {
       btn.textContent = curso.nombre;
       btn.className = "curso bloqueado";
       btn.id = `curso-${curso.id}`;
-      btn.disabled = curso.prereq.length > 0;
-
-      btn.onclick = () => {
-        aprobados.add(curso.id);
-        btn.classList.remove("bloqueado");
-        btn.classList.add("aprobado");
-        btn.disabled = true;
-        actualizarCursos();
-      };
+      btn.disabled = true;
 
       divCiclo.appendChild(btn);
     });
 
     malla.appendChild(divCiclo);
   });
+
+  actualizarCursos();
 }
 
 function actualizarCursos() {
   cursos.forEach(curso => {
-    if (!aprobados.has(curso.id)) {
+    const btn = document.getElementById(`curso-${curso.id}`);
+    if (aprobados.has(curso.id)) {
+      btn.classList.remove("bloqueado");
+      btn.classList.add("aprobado");
+      btn.disabled = true;
+    } else {
       const cumple = curso.prereq.every(p => aprobados.has(p));
-      const btn = document.getElementById(`curso-${curso.id}`);
-      if (cumple) btn.disabled = false;
+      btn.disabled = !cumple;
+      btn.classList.toggle("bloqueado", !cumple);
+      btn.onclick = cumple
+        ? () => {
+            aprobados.add(curso.id);
+            actualizarCursos();
+          }
+        : null;
     }
   });
 }
