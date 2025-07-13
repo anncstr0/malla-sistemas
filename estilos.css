@@ -1,1 +1,50 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f6ff;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #3a6ea5;
+}
+
+.ciclo {
+  border: 2px solid #aad4f5;
+  background-color: #eaf4ff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.ciclo h2 {
+  margin-top: 0;
+  color: #2b5981;
+}
+
+.curso {
+  display: inline-block;
+  margin: 8px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  min-width: 180px;
+}
+
+.bloqueado {
+  background-color: #bcdcf0;
+  color: #7a8d9c;
+  cursor: not-allowed;
+}
+
+.aprobado {
+  background-color: #72c4ff;
+  color: #fff;
+}
 
